@@ -12,5 +12,6 @@ public class MyFirstGame {
             personNumber++;
         }
         }
+        System.out.println("Вы угадали!");
     }
 }
