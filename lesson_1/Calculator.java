@@ -15,7 +15,7 @@ public class Calculator {
         } else if (operation == '^') {
             int result = 1;
             for (int i = 1; i <= y; i++) {
-                result = result * x;
+                result *= x;
             }
             System.out.println(result);
         } else if (operation == '%') {

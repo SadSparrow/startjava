@@ -5,12 +5,13 @@ public class MyFirstGame {
 
         while (quizNumber != personNumber) {
             if (quizNumber < personNumber) {
-            System.out.println("Введенное вами число больше того, что загадал компьютер");
-            personNumber--;
+                System.out.println("Введенное вами число больше того, что загадал компьютер");
+                personNumber--;
         } else {
             System.out.println("Введенное вами число меньше того, что загадал компьютер");
             personNumber++;
+            }
         }
-        }
+        System.out.println("Вы угадали!");
     }
 }
