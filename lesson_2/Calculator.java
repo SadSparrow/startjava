@@ -1,7 +1,7 @@
 public class Calculator {
-    int x;
-    int y;
-    char operation = '+';
+    private int x;
+    private int y;
+    private char operation = '+';
 
     public int getX() {
         return x;
@@ -27,7 +27,7 @@ public class Calculator {
         this.operation = operation;
     }
 
-    public void calcResult(int x, int y, char operation) {
+    public void calculate() {
         switch (operation) {
             case '+':
                 System.out.println(x + y);
