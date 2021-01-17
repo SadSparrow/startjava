@@ -1,26 +1,14 @@
 public class Calculator {
     private int x;
     private int y;
-    private char operation = '+';
-
-    public int getX() {
-        return x;
-    }
+    private char operation;
 
     public void setX(int x) {
         this.x = x;
     }
 
-    public int getY() {
-        return y;
-    }
-
     public void setY(int y) {
         this.y = y;
-    }
-
-    public char getOperation() {
-        return operation;
     }
 
     public void setOperation(char operation) {
