@@ -5,52 +5,44 @@ public class Jaeger {
     private String energyCore;
     private float height;
 
-    public String getModelName() {
-        return modelName;
+    public Jaeger(String modelName, String mark, String origin) {
+        this.modelName = modelName;
+        this.mark = mark;
+        this.origin = origin;
     }
 
-    public void setModelName(String modelName) {
-        if (getModelName() == null) {
-            this.modelName = modelName;
+    public Jaeger(String modelName, String mark, String origin, String energyCore) {
+        this(modelName, mark, origin);
+        this.energyCore = energyCore;
+    }
+
+    public Jaeger(String modelName, String mark, String origin, String energyCore, float height) {
+        this(modelName, mark, origin, energyCore);
+        if (height <= 0) {
+            System.out.println("Высота не может быть меньше нуля");
         } else {
-            System.out.println("Ошибка! Model Name уже инициализировано: " + getModelName());
+            this.height = height;
         }
+    }
+
+    public String getModelName() {
+        return modelName;
     }
 
     public String getMark() {
         return mark;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
     public String getOrigin() {
         return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
     }
 
     public String getEnergyCore() {
         return energyCore;
     }
 
-    public void setEnergyCore(String energyCore) {
-        this.energyCore = energyCore;
-    }
-
     public float getHeight() {
         return height;
-    }
-
-    public void setHeight(float height) {
-        if (height <= 0) {
-            System.out.println("Высота не может быть меньше нуля");
-        } else {
-            this.height = height;
-        }
     }
 
     public boolean drift() {

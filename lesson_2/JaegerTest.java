@@ -1,30 +1,19 @@
 public class JaegerTest {
     public static void main(String[] args) {
-        Jaeger jaegerTyphoon = new Jaeger();
-        Jaeger jaegerTango = new Jaeger();
+        Jaeger jaegerTyphoon1 = new Jaeger("Crimson Typhoon", "Mark-4", "China");
+        Jaeger jaegerTango1 = new Jaeger("Coyote Tango", "Mark-1", "Japan", "Iso-thor reaction chamber");
 
-        jaegerTyphoon.setModelName("Crimson Typhoon");
-        jaegerTango.setModelName("Coyote Tango");
-        jaegerTyphoon.setMark("Mark-4");
-        jaegerTango.setMark("Mark-1");
-        jaegerTyphoon.setOrigin("China");
-        jaegerTango.setOrigin("Japan");
+        System.out.println(jaegerTango1.toString());
+        System.out.println(jaegerTyphoon1.toString());
 
-        System.out.println(jaegerTango.toString());
-        System.out.println(jaegerTyphoon.toString());
+        Jaeger jaegerTyphoon2 = new Jaeger("Crimson Typhoon", "Mark-4", "China", "Midnight Orb 9");
+        Jaeger jaegerTango2 = new Jaeger("Coyote Tango", "Mark-1", "Japan", "Iso-thor reaction chamber", 85.34f);
 
-        jaegerTyphoon.setEnergyCore("Midnight Orb 9");
-        jaegerTango.setEnergyCore("Iso-thor reaction chamber");
-        jaegerTyphoon.setHeight(76.2f);
-        jaegerTango.setHeight(85.34f);
+        jaegerTyphoon1.drift();
+        System.out.println(jaegerTango2.activateWeapon());
 
-        jaegerTyphoon.drift();
-        System.out.println(jaegerTango.activateWeapon());
+        Jaeger jaeger3 = new Jaeger("Name", "Mark", "China", "Energy core", -5);
 
-        jaegerTango.setModelName("some new name");
-        System.out.println(jaegerTango.getModelName());
-
-        jaegerTyphoon.setHeight(-5);
-        System.out.println(jaegerTyphoon.getHeight());
+        System.out.println(jaegerTyphoon3.getHeight());
     }
 }
