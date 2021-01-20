@@ -1,3 +1,5 @@
+package com.statrjava.lesson_2_3.game;
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -33,12 +35,10 @@ public class GuessNumber {
     private boolean guessNumber(Player p) {
         if (quizNumber < p.getNumber()) {
             System.out.println("Введенное игроком " + p.getName() + " число больше того, что загадал компьютер");
-        }
-        if (quizNumber > p.getNumber()) {
+        } else if (quizNumber > p.getNumber()) {
             System.out.println("Введенное игроком " + p.getName() + " число меньше того, что загадал компьютер");
-        }
-        if (quizNumber == p.getNumber()) {
-            System.out.println("Игрок " + p.getName() + " угадал число!");
+        } else {
+            System.out.println("Player " + p.getName() + " win!");
         }
         return quizNumber == p.getNumber();
     }

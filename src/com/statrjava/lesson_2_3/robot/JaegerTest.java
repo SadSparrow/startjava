@@ -1,3 +1,5 @@
+package com.statrjava.lesson_2_3.robot;
+
 public class JaegerTest {
     public static void main(String[] args) {
         Jaeger jaegerTyphoon1 = new Jaeger("Crimson Typhoon", "Mark-4", "China");
@@ -14,6 +16,6 @@ public class JaegerTest {
 
         Jaeger jaeger3 = new Jaeger("Name", "Mark", "China", "Energy core", -5);
 
-        System.out.println(jaegerTyphoon3.getHeight());
+        System.out.println(jaeger3.getHeight());
     }
 }
