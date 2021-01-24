@@ -1,44 +1,34 @@
 package com.statrjava.lesson_4.calculator;
 
 public class Calculator {
+    private String mathString;
     private int x;
     private int y;
     private char operation;
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setOperation(char operation) {
-        this.operation = operation;
+    public Calculator(String mathString) {
+        this.mathString = mathString;
+        String[] s = mathString.split(" ");
+        x = Integer.parseInt(s[0]);
+        y = Integer.parseInt(s[2]);
+        operation = s[1].charAt(0);
     }
 
     public int calculate() {
-        int result = 0;
         switch (operation) {
             case '+':
-                result = Math.addExact(x, y);
-                break;
+                return Math.addExact(x, y);
             case '-':
-                result = Math.subtractExact(x, y);
-                break;
+                return Math.subtractExact(x, y);
             case '*':
-                result = Math.multiplyExact(x, y);
-                break;
+                return Math.multiplyExact(x, y);
             case '/':
-                result = Math.floorDiv(x, y);
-                break;
+                return Math.floorDiv(x, y);
             case '%':
-                result = Math.floorMod(x, y);
-                break;
+                return Math.floorMod(x, y);
             case '^':
-                result = (int) Math.pow(x, y);
-                break;
+                return (int) Math.pow(x, y);
         }
-        return result;
+        return 0;
     }
 }
