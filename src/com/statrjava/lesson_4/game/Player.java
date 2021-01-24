@@ -28,18 +28,17 @@ public class Player {
         index++;
     }
 
-    public void getNumbersToString() {
+    public String getNumbersToString() {
         StringBuilder sb = new StringBuilder();
         int[] numbers = Arrays.copyOf(this.numbers, index);
         for (int i : numbers) {
             sb.append(i).append(" ");
         }
-        System.out.println(sb.toString());
+        return sb.toString();
     }
 
     public void cleanArray() {
-        //int[] numbers = Arrays.copyOf(this.numbers, index);
-        Arrays.fill(numbers, 0);
+        Arrays.fill(numbers, 0, index, 0);
         index = 0;
     }
 }
