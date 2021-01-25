@@ -1,20 +1,13 @@
 package com.statrjava.lesson_4.calculator;
 
 public class Calculator {
-    private String mathString;
-    private int x;
-    private int y;
-    private char operation;
 
-    public Calculator(String mathString) {
-        this.mathString = mathString;
+    public int calculate(String mathString) {
         String[] s = mathString.split(" ");
-        x = Integer.parseInt(s[0]);
-        y = Integer.parseInt(s[2]);
-        operation = s[1].charAt(0);
-    }
+        int x = Integer.parseInt(s[0]);
+        int y = Integer.parseInt(s[2]);
+        char operation = s[1].charAt(0);
 
-    public int calculate() {
         switch (operation) {
             case '+':
                 return Math.addExact(x, y);
