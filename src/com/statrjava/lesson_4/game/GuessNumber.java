@@ -20,16 +20,8 @@ public class GuessNumber {
         Random random = new Random();
         quizNumber = random.nextInt(100) + 1;
 
-        player1.cleanArray();
-        player2.cleanArray();
-
         for (int i = 0; i < countOfTry; i++) {
-            inputNumber(player1);
-            if (guessNumber(player1)) {
-                break;
-            }
-            inputNumber(player2);
-            if (guessNumber(player2)) {
+            if (guessLogic(player1) || guessLogic(player2)){
                 break;
             }
             if (i == countOfTry - 1) {
@@ -37,8 +29,16 @@ public class GuessNumber {
                 System.out.println("у " + player2.getName() + " закончились попытки");
             }
         }
-        System.out.println(player1.getNumbersToString());
-        System.out.println(player2.getNumbersToString());
+        getNumbersToString(player1);
+        getNumbersToString(player2);
+        player1.cleanArray();
+        player2.cleanArray();
+    }
+
+    private boolean guessLogic(Player p) {
+        inputNumber(p);
+        return guessNumber(p);
+
     }
 
     private void inputNumber(Player p) {
@@ -47,12 +47,25 @@ public class GuessNumber {
     }
 
     private boolean guessNumber(Player p) {
-        String sBigger = "Введенное игроком " + p.getName() + " число больше того, что загадал компьютер";
-        String sSmaller = "Введенное игроком " + p.getName() + " число меньше того, что загадал компьютер";
-        String sWin = "Игрок " + p.getName() + " угадал число " + quizNumber + " с " + p.getIndex() + " попытки";
-        
-        String result = (quizNumber < p.getNumber()) ? sBigger : (quizNumber > p.getNumber() ? sSmaller :  sWin);
-        System.out.println(result);
+        String s = (quizNumber < p.getNumber()) ? "больше" : "меньше";
+        String message = "Введенное игроком " + p.getName() + " число " + s + " того, что загадал компьютер";
+
+        if (quizNumber < p.getNumber()) {
+            System.out.println(message);
+        } else if (quizNumber > p.getNumber()) {
+            System.out.println(message);
+        } else {
+            System.out.println("Игрок " + p.getName() + " угадал число " + quizNumber + " с " + p.getIndex() + " попытки");
+        }
         return quizNumber == p.getNumber();
+    }
+
+    private void getNumbersToString(Player p) {
+        StringBuilder sb = new StringBuilder();
+        int[] numbers = p.getNumbersArray();
+        for (int i : numbers) {
+            sb.append(i).append(" ");
+        }
+        System.out.println(sb.toString());
     }
 }
