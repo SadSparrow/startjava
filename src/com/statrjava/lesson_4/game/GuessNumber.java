@@ -8,17 +8,15 @@ public class GuessNumber {
     private final Player player2;
     private int quizNumber;
     private int countOfTry = 10;
-
-    public int getCountOfTry() {
-        return countOfTry;
-    }
-
-
     Scanner scan = new Scanner(System.in);
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
+    }
+
+    public int getCountOfTry() {
+        return countOfTry;
     }
 
     public void start() {
@@ -29,10 +27,6 @@ public class GuessNumber {
             if (makeMove(player1) || makeMove(player2)) {
                 break;
             }
-            if (i == countOfTry - 1) {
-                System.out.println("у " + player1.getName() + " закончились попытки");
-                System.out.println("у " + player2.getName() + " закончились попытки");
-            }
         }
         showEnteredNumbers(player1);
         showEnteredNumbers(player2);
@@ -42,9 +36,13 @@ public class GuessNumber {
 
     private boolean makeMove(Player p) {
         inputNumber(p);
-        System.out.println("Введенное игроком " + p.getName() + " число " + ((quizNumber < p.getNumber()) ? "больше" : "меньше") + " того, что загадал компьютер");
-        if (quizNumber == p.getNumber()) {
+        if (quizNumber != p.getNumber()) {
+            System.out.println("Введенное игроком " + p.getName() + " число " + ((quizNumber < p.getNumber()) ? "больше" : "меньше") + " того, что загадал компьютер");
+        } else {
             System.out.println("Игрок " + p.getName() + " угадал число " + quizNumber + " с " + p.getAttempt() + " попытки");
+        }
+        if (p.getAttempt() == 10) {
+            System.out.println("у " + p.getName() + " закончились попытки");
         }
         return quizNumber == p.getNumber();
     }
@@ -55,8 +53,8 @@ public class GuessNumber {
     }
 
     private void showEnteredNumbers(Player p) {
-        for (int i : p.getNumbers()) {
-            System.out.print(i + " ");
+        for (int number : p.getNumbers()) {
+            System.out.print(number + " ");
         }
         System.out.println();
     }
