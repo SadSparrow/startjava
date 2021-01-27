@@ -8,7 +8,6 @@ public class GuessNumber {
     private final Player player2;
     private int quizNumber;
     private int countOfTry = 10;
-    Scanner scan = new Scanner(System.in);
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
@@ -47,6 +46,7 @@ public class GuessNumber {
     }
 
     private void inputNumber(Player p) {
+        Scanner scan = new Scanner(System.in);
         System.out.print("Очередь игрока " + p.getName() + ": ");
         p.setNumber(scan.nextInt());
     }
