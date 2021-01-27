@@ -20,8 +20,7 @@ public class GuessNumber {
     }
 
     public void start() {
-        Random random = new Random();
-        quizNumber = random.nextInt(100) + 1;
+        quizNumber = new Random().nextInt(100) + 1;
 
         for (int i = 0; i < countOfTry; i++) {
             if (makeMove(player1) || makeMove(player2)) {
