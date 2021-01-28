@@ -6,22 +6,17 @@ import java.util.Scanner;
 public class GuessNumber {
     private Player[] players;
     private int quizNumber;
-    private int countOfTry;
+    private final int countOfTry;
 
-    public GuessNumber(Player[] players) {
+    public GuessNumber(Player[] players, int countOfTry) {
         this.players = players;
-    }
-
-    public int getCountOfTry() {
-        return countOfTry;
-    }
-
-    public void setCountOfTry(int countOfTry) {
         this.countOfTry = countOfTry;
     }
 
     public void start() {
         quizNumber = new Random().nextInt(100) + 1;
+        System.out.println(quizNumber);
+        System.out.println("У вас " + countOfTry + " попыток");
 
         first:
         for (int i = 0; i < countOfTry; i++) {
@@ -39,12 +34,16 @@ public class GuessNumber {
 
     private boolean makeMove(Player p) {
         inputNumber(p);
+        return guessNumber(p);
+    }
+
+    private boolean guessNumber(Player p) {
         if (quizNumber != p.getNumber()) {
             System.out.println("Введенное игроком " + p.getName() + " число " + ((quizNumber < p.getNumber()) ? "больше" : "меньше") + " того, что загадал компьютер");
         } else {
             System.out.println("Игрок " + p.getName() + " угадал число " + quizNumber + " с " + p.getAttempt() + " попытки");
         }
-        if (p.getAttempt() == countOfTry) {
+        if (p.getAttempt() == countOfTry && quizNumber != p.getNumber()) {
             System.out.println("у " + p.getName() + " закончились попытки");
         }
         return quizNumber == p.getNumber();

@@ -15,11 +15,8 @@ public class GuessNumberTest {
             System.out.print("Введите имя игрока №" + (i + 1) + ": ");
             players[i] = new Player(reader.readLine());
         }
-
-        GuessNumber game = new GuessNumber(players);
         System.out.print("Введите количество попыток: ");
-        game.setCountOfTry(Integer.parseInt(reader.readLine()));
-        System.out.println("У вас " + game.getCountOfTry() + " попыток");
+        GuessNumber game = new GuessNumber(players, Integer.parseInt(reader.readLine()));
         String playerAnswer = "да";
 
         while (playerAnswer.equals("да")) {
