@@ -14,13 +14,9 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    public int getCountOfTry() {
-        return countOfTry;
-    }
-
     public void start() {
         quizNumber = new Random().nextInt(100) + 1;
-
+        System.out.println("У вас " + countOfTry + " попыток");
         for (int i = 0; i < countOfTry; i++) {
             if (makeMove(player1) || makeMove(player2)) {
                 break;
@@ -34,6 +30,10 @@ public class GuessNumber {
 
     private boolean makeMove(Player p) {
         inputNumber(p);
+        return guessNumber(p);
+    }
+
+    private boolean guessNumber(Player p) {
         if (quizNumber != p.getNumber()) {
             System.out.println("Введенное игроком " + p.getName() + " число " + ((quizNumber < p.getNumber()) ? "больше" : "меньше") + " того, что загадал компьютер");
         } else {
@@ -46,9 +46,8 @@ public class GuessNumber {
     }
 
     private void inputNumber(Player p) {
-        Scanner scan = new Scanner(System.in);
         System.out.print("Очередь игрока " + p.getName() + ": ");
-        p.setNumber(scan.nextInt());
+        p.setNumber(new Scanner(System.in).nextInt());
     }
 
     private void showEnteredNumbers(Player p) {
