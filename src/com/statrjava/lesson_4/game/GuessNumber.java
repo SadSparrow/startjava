@@ -30,6 +30,9 @@ public class GuessNumber {
 
     private boolean makeMove(Player p) {
         inputNumber(p);
+        if (p.getAttempt() == 10) {
+            System.out.println("у " + p.getName() + " закончились попытки");
+        }
         return guessNumber(p);
     }
 
@@ -38,9 +41,6 @@ public class GuessNumber {
             System.out.println("Введенное игроком " + p.getName() + " число " + ((quizNumber < p.getNumber()) ? "больше" : "меньше") + " того, что загадал компьютер");
         } else {
             System.out.println("Игрок " + p.getName() + " угадал число " + quizNumber + " с " + p.getAttempt() + " попытки");
-        }
-        if (p.getAttempt() == 10) {
-            System.out.println("у " + p.getName() + " закончились попытки");
         }
         return quizNumber == p.getNumber();
     }
